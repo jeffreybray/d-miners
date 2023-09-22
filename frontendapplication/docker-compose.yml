@@ -1,0 +1,18 @@
+version: '2.4'
+
+services:
+  sprbd:
+    build: 
+      context: .
+      args:
+        - NODE_ENV=production
+    image: dminers:latest
+    environment:
+      - NODE_ENV=production
+    networks:
+      - sprbd
+    healthcheck:
+      disable: true
+ 
+networks:
+  sprbd:
