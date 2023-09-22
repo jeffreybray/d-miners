@@ -1,0 +1,14 @@
+version: '2.4'
+
+services:
+  sprbdbe:
+    build: 
+      context: .
+    image: dminersbe:latest
+    networks:
+      - sprbd
+    healthcheck:
+      disable: true
+ 
+networks:
+  sprbd:
