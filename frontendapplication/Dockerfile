@@ -1,9 +1,10 @@
 # Build stage
-FROM node:18-bullseye-slim as builder
+FROM node:18 as builder
+# original was built with Node 14, need the following to fix build error
+ENV NODE_OPTIONS="--openssl-legacy-provider"
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm install
-#RUN npm ci
+RUN npm ci
 COPY . .
 RUN npm run build
 
