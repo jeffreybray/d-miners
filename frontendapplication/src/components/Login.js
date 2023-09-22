@@ -7,7 +7,6 @@ import { withRouter } from "react-router";
 import axios from "axios";
 
 
-const eventBaseUrl = "http://localhost:8080/user/login";
 
 
 
@@ -44,20 +43,21 @@ class Login extends React.Component {
         const reqJson={
             username:username,password:password
         }
-        axios.post(eventBaseUrl,reqJson).then((res) => {
-            if(res.data.loginStatus)
+   let res={"loginStatus":true,"userId":"15","username":"john"}
+
+            if(res.loginStatus)
             {
                 localStorage.setItem("username",username)
-                localStorage.setItem("userId",res.data.userId)
+                localStorage.setItem("userId",res.userId)
                 push({
                     pathname: "/home",
                     username: username,
                 });
             }
-            if(!res.data.loginStatus){
+            if(!res.loginStatus){
                 this.setState({shouldLoginErrorDisplay: true})
             }
-        });
+
     };
 
     render() {

@@ -89,7 +89,7 @@ class RoomCard extends React.Component {
                                 Date:{eventDetailsData.date}
                             </Typography>
                             <Typography className={classes.title}  gutterBottom>
-                                Time:{eventDetailsData.time}
+                               Out Time:{eventDetailsData.time}
                             </Typography>
                             <Typography className={classes.title}  gutterBottom>
                                 Status:{eventDetailsData.status}
@@ -111,12 +111,12 @@ class RoomCard extends React.Component {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {eventDetailsData.participants.map((row) => (
+                                    {eventDetailsData.providers.map((row) => (
                                         <StyledTableRow key={row.name}>
                                             <StyledTableCell component="th" scope="row">
                                                 {row.name}
                                             </StyledTableCell>
-                                            <StyledTableCell align="center">{row.eventId}</StyledTableCell>
+                                            <StyledTableCell align="center">{row.cabinIdId}</StyledTableCell>
                                         </StyledTableRow>
                                     ))}
                                 </TableBody>
