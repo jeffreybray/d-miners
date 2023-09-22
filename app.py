@@ -126,8 +126,9 @@ html.Br(),
 
  dbc.Row(
                         [
-                             dbc.Col(html.Div(id='redd-cards', children=get_dash_table('reddit_df',reddit_df)),width=7),
-                             dbc.Col(dbc.Card(html.Div(id='news-cards', children=show_news())),width=4)
+                              dbc.Col(dbc.Card(html.Div(id='news-cards', children=show_news())),width=4),
+                             dbc.Col(html.Div(id='redd-cards', children=get_dash_table('reddit_df',reddit_df)),width=7)
+
 
                         ],
      justify="around"
