@@ -1,0 +1,41 @@
+// Create a new service by POST to http://34.226.221.18:8080/api/services
+{
+	"serviceName": "Housing",
+	"serviceType": "Shelter",
+
+		"serviceWorkFlow": [
+		  {
+            "workFlowState": "InNeed",
+            "workFlowOrder": 1
+          },
+          {
+            "workFlowState": "Assinged",
+            "workFlowOrder": 2
+          },
+          {
+            "workFlowState": "Permanent",
+            "workFlowOrder": 3
+          }          
+		]
+}
+
+// Create a provider without service first by POST to http://34.226.221.18:8080/api/providers
+
+{
+    "providerCapacity": 5,
+    "providerLogo": "s3/springfieldlogo",
+    "providerEmail": "springfield@mail.com",
+    "providerName": "SprngField"
+}
+
+// Then PUT the previous service link to http://34.226.221.18:8080/api/providers/1/service
+{
+    "_links": {
+        "service": {
+        "href": "http://34.226.221.18:8080/api/services/1"
+        }
+    }
+}
+
+// If the association is one to many, i.e. a collection, use POST instead to add to the collecton
+// See https://docs.spring.io/spring-data/rest/docs/current/reference/html/#repository-resources.association-resource for more infromation
