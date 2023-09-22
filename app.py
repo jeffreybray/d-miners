@@ -22,12 +22,24 @@ spvreportdata.fillna(0,inplace=True)
 spvreportdata.columns = ['Services','Type','Feb','Mar','Apr','May','Jun','Total']
 
 
-labels = ['Identify','Collaborate & Track','Report']
-source_filter_fig = go.Figure(data=[go.Pie(labels=labels,marker_colors = color_palette_discrete)])
-source_filter_fig.update_traces(textposition='inside', textinfo='label')
-source_filter_fig.update_layout(title="Source Filter",height=225,showlegend=False)
 
+# Define the labels and values hierarchically
+labels = ["Identify", "Collaborate & Track", "Report"]
+parents = ["", "", ""]
 
+# Create a TreeMap figure
+source_filter_fig = go.Figure(go.Treemap(
+    labels=labels,
+    parents=parents,
+    marker_colors=color_palette_discrete
+))
+
+# Customize the layout
+source_filter_fig.update_layout(
+    title="TreeMap with Labels",
+    margin=dict(t=0, l=0, r=0, b=0)  # Adjust margins as needed
+)
+source_filter_fig.update_layout(title="Source Filter",height=100)
 
 def show_news():
     #top_headlines_title = [str(translate(model,tok,top_headlines['articles'][i]['title'])[0]) for i in range(len(top_headlines['articles']))]
@@ -57,7 +69,7 @@ html.Br(),
  dbc.Row(
                         [
                              dbc.Col(html.Div(id='redd-cards', children=get_dash_table('reddit_df',reddit_df)),width=7),
-                             dbc.Col(dbc.Card(html.Div(id='news-cards', children=show_news()),width=4))
+                             dbc.Col(dbc.Card(html.Div(id='news-cards', children=show_news())),width=4)
 
                         ],
      justify="around"
@@ -68,6 +80,9 @@ html.Br(),
 
 app.layout = html.Div(
         [
+        dbc.Col(
+                html.H1("Springboard Collaborative Dashboard", style={"font-weight": "bold", 'textAlign': 'center'}),
+                md=10),
     dbc.Row([
 
           dbc.Col(dbc.Card(dcc.Graph(id="source_filter_fig",figure=source_filter_fig)), width=11)
