@@ -15,5 +15,6 @@
 *docker-compose*
 *docker-stack*
 sonar-project.properties
+target
 test-coverage
 node_modules
