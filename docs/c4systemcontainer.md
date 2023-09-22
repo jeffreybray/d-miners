@@ -11,11 +11,11 @@ C4Container
     System_Ext(systemEmail, "Email system", "Send invitations for collaboration")
 
     Container_Boundary(c1, "Springboard Collaboration/Tracking Service") {
-        Container(web_app, "Web Application", "NGINX, Docker Container", "Delivers the static content <br>and the React front-end SPA")
+        Container(web_app, "Web Application", "NGINX, Docker Container, AWS AppRunner", "Delivers the static content <br>and the React front-end SPA")
         Container(spa, "Single-Page App", "JavaScript, React", "Provides all the service functionality <br>to cutomers via their web browser")
-        Container(backend_api, "API Application", "Java, Docker Container", "Provides service functionality via API")
-        ContainerDb(database, "Database", "MySQL Database, Docker Container", "Stores user information, messaging,<br>auth credentials, access logs, etc.")
-        Container(files, "File Storage", "AWS S3 bucket")
+        Container(backend_api, "API Application", "Java, Docker Container???", "Provides service functionality via API")
+        ContainerDb(database, "Database", "MySQL Database, EC2 VM", "Stores user information, messaging,<br>auth credentials, access logs, etc.")
+        Container(files, "File Storage", "MySQL Blob Storage")
     }
     Rel(persSB_CM, web_app, "Visits https://app.the-springboard.org/", "HTTPS")
     UpdateRelStyle(persSB_CM, web_app, $offsetY="60", $offsetX="-140")
