@@ -64,17 +64,17 @@ class OngoingEvents extends React.Component {
     handleDisplayValue=(value,data)=>{
         this.setState({
             isShowCard:value,
-            newEventDetails:data
+            providerDetails:data
         })
     }
 
     handleBack=()=>{
-        this.setState({isShowCard:true,newEventDetails:[]})
+        this.setState({isShowCard:true,providerDetails:[]})
     }
 
     render() {
         const {
-            eventDetails,isShowCard,newEventDetails
+            eventDetails,isShowCard,providerDetails
         } = this.state;
 
 
@@ -86,32 +86,32 @@ class OngoingEvents extends React.Component {
                         )}</div>:
                     <div style={{'margin-top': 36}}>
                         <Button style={{'padding':1,'margin-bottom':6,'backgroundColor':'cadetblue'}} onClick={this.handleBack}>Back</Button>
-                        {newEventDetails.participants.length>0 ?
+                        {providerDetails.providers?.length>0 ?
                             <TableContainer component={Paper}>
                                 <Table aria-label="customized table">
                                     <TableHead>
                                         <TableRow>
-                                            <StyledTableCell>Participant Name</StyledTableCell>
-                                            <StyledTableCell align="center">Event ID</StyledTableCell>
-                                            <StyledTableCell align="center">Event Name</StyledTableCell>
-                                            <StyledTableCell align="center">Event Location</StyledTableCell>
+                                            <StyledTableCell>Provider Name</StyledTableCell>
+                                            <StyledTableCell align="center">CABIN ID</StyledTableCell>
+                                            <StyledTableCell align="center">CABIN Name</StyledTableCell>
+                                            <StyledTableCell align="center">CABIN Location</StyledTableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {newEventDetails.participants.map((row) => (
+                                        {providerDetails.providers.map((row) => (
                                             <StyledTableRow key={row.name}>
                                                 <StyledTableCell component="th">
                                                     {row.name}
                                                 </StyledTableCell>
-                                                <StyledTableCell align="center">{row.eventId}</StyledTableCell>
-                                                <StyledTableCell align="center">{newEventDetails.name}</StyledTableCell>
-                                                <StyledTableCell align="center">{newEventDetails.location}</StyledTableCell>
+                                                <StyledTableCell align="center">{row.cabinIdId}</StyledTableCell>
+                                                <StyledTableCell align="center">{providerDetails.name}</StyledTableCell>
+                                                <StyledTableCell align="center">{providerDetails.location}</StyledTableCell>
 
                                             </StyledTableRow>
                                         ))}
                                     </TableBody>
                                 </Table>
-                            </TableContainer>:<h1>No participants</h1>}
+                            </TableContainer>:<h1>No providers</h1>}
                     </div> }
 
             </div>
