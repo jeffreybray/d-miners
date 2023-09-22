@@ -1,0 +1,95 @@
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/serviceWorkFlows/1"
+    },
+    "serviceWorkFlow": {
+      "href": "http://localhost:8080/api/serviceWorkFlows/1"
+    }
+
+
+
+    {
+      "serviceType": "service type 1",
+      "serviceName": "service name 1",
+      "_embedded": {
+        "serviceWorkFlow": [
+          {
+            "workFlowState": "state 1",
+            "workFlowOrder": 1
+          },
+          {
+            "workFlowState": "state 2",
+            "workFlowOrder": 2
+          }
+        ]
+      }
+    }
+
+
+    {
+      "serviceType": "service type 2",
+      "serviceName": "service name 2",
+      "_links": {
+        "serviceWorkFlow": [{
+          "href": "http://localhost:8080/api/serviceWorkFlows/1"
+        }]
+      }
+    }
+
+
+    http://localhost:8080/api/services/1/serviceWorkFlow
+    {
+      "_links": {
+        "serviceWorkFlow": {
+          "href": "http://localhost:8080/api/serviceWorkFlows/1"
+        }
+      }
+    }
+
+    {
+      "_links": {
+        "serviceWorkFlow": {
+          "href": "http://localhost:8080/api/serviceWorkFlows/2"
+        }
+      }
+    }
+
+
+    provider to Service
+    "http://localhost:8080/api/providers/1/service"
+{
+    "_links": {
+        "service": {
+          "href": "http://localhost:8080/api/services/1"
+        }
+    }
+}
+
+
+{
+	"serviceName": "Housing",
+	"serviceType": "Shelter",
+
+		"serviceWorkFlow": [
+		  {
+            "workFlowState": "InNeed",
+            "workFlowOrder": 1
+          },
+          {
+            "workFlowState": "Assinged",
+            "workFlowOrder": 2
+          },
+          {
+            "workFlowState": "Permanent",
+            "workFlowOrder": 3
+          }          
+		]
+}
+
+{
+    "_links" : {
+        "service": {
+          "href": "http://localhost:8080/api/services/2"
+        }
+    }
+}
