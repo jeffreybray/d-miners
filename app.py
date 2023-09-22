@@ -16,6 +16,8 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.MATERIA])
 casedata = pd.read_excel('data/Case Management Data.xlsx')
 spvreportdata = pd.read_excel('data/spvreportdata.xlsx')
 news_df = pd.read_csv('data/newsdata.csv')
+reddit_df = pd.read_csv('data/redditdata.csv')
+
 spvreportdata.fillna(0,inplace=True)
 spvreportdata.columns = ['Services','Type','Feb','Mar','Apr','May','Jun','Total']
 
@@ -41,9 +43,7 @@ def show_news():
                                     ,html.P("|"+top_headlines_source[i]+"|"+top_headlines_date[i])]),
                 dbc.CardBody([
 
-                              html.Img(src=top_headlines_img[i],alt="image",style={
-                                'max-width': '50%','max-height': '70%',
-                                'margin': 'auto','display': 'block'}
+                              html.Img(src=top_headlines_img[i]
                                 )]),
                 ],
                 color='secondary',style={"max-width":250,"height":250,"display":"flex","float":"left",  "margin": 20}) for i in range(len(top_headlines_title))]
@@ -54,7 +54,15 @@ def show_news():
 identify_layout = html.Div(children=[
 html.Br(),
 
-html.Div(id='news-cards', children=show_news())
+ dbc.Row(
+                        [
+                             dbc.Col(html.Div(id='redd-cards', children=get_dash_table('reddit_df',reddit_df)),width=7),
+                             dbc.Col(dbc.Card(html.Div(id='news-cards', children=show_news()),width=4))
+
+                        ],
+     justify="around"
+                    )
+
 
 ])
 

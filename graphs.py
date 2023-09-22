@@ -1,7 +1,7 @@
 import plotly.graph_objects as go
 import plotly.express as px
 from wordcloud import WordCloud
-
+import  dash_table
 #palette_cmap = ["#DFC27D","#e9c46a","#DA9B47","#00847A","#01665E","#254441"]
 palette_cmap = ["#008C76","#FF6B6B","#FFD166","#6A0572","#DA9B47","#00847A"]
 
@@ -129,7 +129,7 @@ def get_dash_table(table_id,table_df):
         }],
         tooltip_duration=None,
 
-            page_size=7,
+            page_size=30,
             style_header={'backgroundColor': '#008ce6', 'fontWeight': 'bold', 'border': '1px solid black',
                           'font_size': '18px'},
             style_cell={'font_size': '11px', 'whiteSpace': 'normal',
