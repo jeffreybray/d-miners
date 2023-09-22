@@ -94,3 +94,47 @@ def sunburst_chart(data, path,chart_title):
             'yanchor': 'top'}
     )
     return sunburst_fig
+
+
+
+def get_dash_table(table_id,table_df):
+
+    return dash_table.DataTable(
+
+        id=table_id,
+        data=table_df.to_dict('records'),
+        columns=[{'id': c, 'name': c, 'type': 'text', 'presentation': 'markdown'} for c in
+                 table_df.columns],
+            style_data={
+                'whiteSpace': 'normal',
+                # 'height': 'auto'
+            },
+
+            row_selectable="multi",
+            selected_rows=[],
+
+            # columns=[{'name': 'Link', 'id': 'Link', 'type': 'text', 'presentation': 'markdown'}],
+
+            filter_action='native',
+            sort_action='native',
+
+        css=[{
+            'selector': '.dash-spreadsheet td div',
+            'rule': '''
+                                                       line-height: 15px;
+                                                       max-height: 30px; min-height: 30px; height: 30px;
+                                                       display: block;
+                                                       overflow-y: hidden;
+                                                   '''
+        }],
+        tooltip_duration=None,
+
+            page_size=7,
+            style_header={'backgroundColor': '#008ce6', 'fontWeight': 'bold', 'border': '1px solid black',
+                          'font_size': '18px'},
+            style_cell={'font_size': '11px', 'whiteSpace': 'normal',
+                        'height': 'auto', 'padding': '15px'},
+            export_format='csv',
+
+
+    )
