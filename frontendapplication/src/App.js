@@ -13,7 +13,7 @@ function App() {
           <Route path="/" component={Login} exact></Route>
           <Route path="/signup" component={Signup}></Route>
           <Route path="/home" component={Main}></Route>
-            <Route path="/discuss" component={DiscussionForum}></Route>
+            <Route path="/home/discussion" component={DiscussionForum}></Route>
 
         </div>
       </BrowserRouter>

@@ -9,8 +9,9 @@ import axios from "axios";
 
 
 
-const eventBaseUrl = "http://localhost:8080/forum/discussions";
 const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+let res=[{"id":"12","text":"<p>Hello, I am looking for mental support</p>","userId":"15","username":"john","time":"2023-09-20T23:26:00.000Z"},{"id":"13","text":"<p>Hello, I am looking for mental support</p>","userId":"15","username":"john","time":"2023-09-21T00:23:02.000Z"}]
+
 class DiscussionForum extends React.Component {
     state = {
         allPosts: []
@@ -18,13 +19,12 @@ class DiscussionForum extends React.Component {
 
     componentWillMount(){
 
-        axios.get(eventBaseUrl).then((res) => {
             const postArray=[];
-            res.data.map((index)=>{
+            res.map((index)=>{
                 postArray.push({name:index.username,content:index.text, date:new Date(index.time)})
             })
             this.setState({allPosts:postArray})
-        });
+
     }
 
     submitPost = (text) => {
@@ -48,9 +48,7 @@ class DiscussionForum extends React.Component {
             time:finalDate
         }
 
-        axios.post(eventBaseUrl,params).then((res) => {
-            console.log(res);
-        });
+     res=res.push(params)
     }
 
     render(){

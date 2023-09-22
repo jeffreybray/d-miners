@@ -41,10 +41,10 @@ class SimpleTabs extends React.Component {
             <div className={classes.root} >
                 <AppBar position="static">
                     <Tabs className={classes.root} value={value} onChange={this.handleChange} centered textColor="primary" indicatorColor="primary">
-                        <Tab  label="Collabarate" href="#basic-tabs"/>
+                        <Tab  label="Collabarate" href="/home"/>
 
-                        <Tab label="Discussion Forum" href="#basic-tabs" />
-                        {<Tab  label="Dashboard" href="#basic-tabs"/>}
+                        <Tab label="Discussion Forum" href="#discuss"/>
+                        <Tab  label="Dashboard" href="#dashboard"/>
                     </Tabs>
                 </AppBar>
                 {value === 0 && <Collabrate/>}
